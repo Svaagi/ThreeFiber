@@ -9,7 +9,7 @@ const Room: FC = () => {
 
   return (
     <>
-      <primitive object={gltf.scene} scale={[1, 1, 1]} />
+      <primitive object={gltf.scene} receiveShadow castShadow scale={[1, 1, 1]} />
     </>
   )
 }

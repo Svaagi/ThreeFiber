@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Canvas } from '@react-three/fiber';
 import ThreeD from './ThreeD';
-import { OrbitControls } from '@react-three/drei';
 
 //canvas for 3D
 

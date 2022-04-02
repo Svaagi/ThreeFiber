@@ -1,27 +1,54 @@
 import { FC, Suspense } from 'react'
 import { useThree } from '@react-three/fiber'
 import Room from './Room'
+import { Link } from 'react-router-dom'
 
 
 const ThreeD: FC = () => { 
-  let check = true;
+  let check = 0;
   const { camera } = useThree();
   camera.position.set(-150,150,150)
   camera.rotation.set(0,-0.73,0)
 
-  //checking if camera is in left or right position
+  //checking camera position
 
-  const setCameraRight = () => {
-    if (check) {
-      camera.position.set(-150,150,150)
-      camera.rotation.set(0,-0.73,0)
-      check = false
+  const setCameraMain = () => {
+    if (check === 1) {
+      camera.position.set(32,104,-30)
+      camera.rotation.set(0,0,0)
+      check = 2
     }
     else {
-      camera.position.set(32,104,-80)
+      camera.position.set(-150,150,150)
+      camera.rotation.set(0,-0.73,0)
+     
+      check = 1
+    }
+  }
+  const setCameraComputer = () => {
+    if (check === 2) {
+      camera.position.set(-150,150,150)
+      camera.rotation.set(0,-0.73,0)
+      check = 1
+    }
+    else {
+      camera.position.set(32,104,-30)
       camera.rotation.set(0,0,0)
      
-      check = true
+      check = 2
+    }
+  }
+  const setCameraBooks = () => {
+    if (check === 3) {
+      camera.position.set(-150,150,150)
+      camera.rotation.set(0,-0.73,0)
+      check = 1
+    }
+    else {
+      camera.position.set(-60, 150, -30)
+      camera.rotation.set(0,0,0)
+     
+      check = 3
     }
   }
 
@@ -31,11 +58,32 @@ const ThreeD: FC = () => {
       <Suspense fallback={null}>
         <pointLight color='#ffffe0' intensity={0.5} castShadow position={[-20,170,-90]} />
         <pointLight color='#ffffe0' intensity={0.2} castShadow  position={[200,10,-50]} />
+        <pointLight color='#ffffe0' intensity={0.1} castShadow  position={[-150,150,150]} />
         <Room />
-        <mesh onClick={setCameraRight} position={[-100, 150, 150]}>
-          <boxGeometry args={[10,10,10]} />
-          <meshStandardMaterial color="hotpink" />
+        <mesh onClick={setCameraMain} position={[-100, 150, 150]}>
+          <boxGeometry args={[5,5,5]} />
+          <meshStandardMaterial color="green" />
         </mesh>
+        <mesh onClick={setCameraComputer} position={[32, 130, -100]}>
+          <boxGeometry args={[10,10,10]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+        <mesh onClick={setCameraBooks} position={[-60, 130, -130]}>
+          <boxGeometry args={[10,10,10]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+        <Link to='/projects'>
+          <mesh position={[32, 104, -105]}>
+            <boxGeometry args={[10,10,10]} />
+            <meshStandardMaterial color="hotpink" />
+          </mesh>
+        </Link>
+        <Link to='/aboutus'>
+          <mesh  position={[-60, 150, -130]}>
+            <boxGeometry args={[10,10,10]} />
+            <meshStandardMaterial color="hotpink" />
+          </mesh>
+        </Link>
       </Suspense>
     
   )

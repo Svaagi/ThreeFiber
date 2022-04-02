@@ -1,14 +1,12 @@
 import { FC, useState } from 'react'
 import Scene from '../componentsR3F/Scene';
-import { Image,Drawer, Button, Group,useMantineTheme, MantineProvider } from '@mantine/core';
-import { NONAME } from 'dns';
-import { sizes } from '@mantine/core/lib/components/ActionIcon/ActionIcon.styles';
+import { Drawer, Button, Group } from '@mantine/core';
 
-//webpage
 
-const Page: FC = () => {
+//Overlay
+
+const Overlay: FC = () => {
   const [opened, setOpened] = useState(false);
-  const theme = useMantineTheme();
 
   return (
     <div>
@@ -47,4 +45,4 @@ const Page: FC = () => {
   )
 }
 
-export default Page
+export default Overlay

@@ -9,7 +9,7 @@ const Contact: FC = () => {
 
   return (
     <div>
-      
+      CONTACT
     </div>
   )
 }

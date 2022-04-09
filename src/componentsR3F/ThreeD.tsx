@@ -1,7 +1,7 @@
 import { FC, Suspense } from 'react'
 import { useThree } from '@react-three/fiber'
 import Room from './Room'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router';
 
 
 const ThreeD: FC = () => { 
@@ -10,6 +10,15 @@ const ThreeD: FC = () => {
   camera.position.set(-150,150,150)
   camera.rotation.set(0,-0.73,0)
 
+  //route buttons
+  const navigate = useNavigate();
+
+  function rAboutus() {
+    navigate('/aboutus')
+  }
+  function rProjects() {
+    navigate('/projects')
+  }
   //checking camera position
 
   const setCameraMain = () => {
@@ -72,18 +81,14 @@ const ThreeD: FC = () => {
           <boxGeometry args={[10,10,10]} />
           <meshStandardMaterial color="green" />
         </mesh>
-        <Link to='/projects'>
-          <mesh position={[32, 104, -105]}>
-            <boxGeometry args={[10,10,10]} />
-            <meshStandardMaterial color="hotpink" />
-          </mesh>
-        </Link>
-        <Link to='/aboutus'>
-          <mesh  position={[-60, 150, -130]}>
-            <boxGeometry args={[10,10,10]} />
-            <meshStandardMaterial color="hotpink" />
-          </mesh>
-        </Link>
+        <mesh onClick={rAboutus} position={[32, 104, -105]}>
+          <boxGeometry args={[10,10,10]} />
+          <meshStandardMaterial color="hotpink" />
+        </mesh>
+        <mesh onClick={rProjects}  position={[-60, 150, -130]}>
+          <boxGeometry args={[10,10,10]} />
+          <meshStandardMaterial color="hotpink" />
+        </mesh>
       </Suspense>
     
   )

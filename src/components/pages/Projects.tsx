@@ -9,7 +9,7 @@ const Projects: FC = () => {
 
   return (
     <div>
-      
+      PROJECTS
     </div>
   )
 }

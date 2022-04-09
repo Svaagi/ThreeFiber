@@ -9,7 +9,7 @@ const AboutUs: FC = () => {
 
   return (
     <div>
-      
+      ABOUTUS
     </div>
   )
 }

@@ -1,17 +1,17 @@
 import { FC, Suspense } from 'react'
 import { useThree } from '@react-three/fiber'
 import Room from './Room'
-import { useNavigate } from 'react-router';
+import { NavigateFunction } from 'react-router'
 
+interface Props {
+  navigate: NavigateFunction;
+}
 
-const ThreeD: FC = () => { 
+const ThreeD: FC<Props> = ({navigate}) => { 
   let check = 0;
   const { camera } = useThree();
   camera.position.set(-150,150,150)
   camera.rotation.set(0,-0.73,0)
-
-  //route buttons
-  const navigate = useNavigate();
 
   function rAboutus() {
     navigate('/aboutus')
@@ -19,6 +19,7 @@ const ThreeD: FC = () => {
   function rProjects() {
     navigate('/projects')
   }
+
   //checking camera position
 
   const setCameraMain = () => {
@@ -81,11 +82,11 @@ const ThreeD: FC = () => {
           <boxGeometry args={[10,10,10]} />
           <meshStandardMaterial color="green" />
         </mesh>
-        <mesh onClick={rAboutus} position={[32, 104, -105]}>
+        <mesh onClick={rProjects} position={[32, 104, -105]}>
           <boxGeometry args={[10,10,10]} />
           <meshStandardMaterial color="hotpink" />
         </mesh>
-        <mesh onClick={rProjects}  position={[-60, 150, -130]}>
+        <mesh onClick={rAboutus}  position={[-60, 150, -130]}>
           <boxGeometry args={[10,10,10]} />
           <meshStandardMaterial color="hotpink" />
         </mesh>
